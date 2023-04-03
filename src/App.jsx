@@ -1,38 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import PokemonCard from './components/PokemonCard'
-
+import NavBar from "./components/NavBar"
 
 
 
 
 function App() {
   const [pokemonIndex, setpokemonIndex] = useState(0);
-  const handleNext = () => {
-    if (pokemonIndex == pokemonList.length - 1) {
-      setpokemonIndex(pokemonList.length - 1)
-    } else {
-      setpokemonIndex(pokemonIndex + 1)
-    }
-  };
-  const handleBefore = () => {
-    if (pokemonIndex == 0) {
-      setpokemonIndex(0)
-    } else {
-      setpokemonIndex(pokemonIndex - 1)
-    }
-  };
+
   return (
     <>
+      <div><NavBar pokemonIndex={pokemonIndex} setpokemonIndex={setpokemonIndex} pokemonList={pokemonList} /></div>
       <div className="App">
         <div> <PokemonCard
           pokemon={pokemonList[pokemonIndex]} /></div>
       </div >
-      <p>{pokemonIndex}</p>
-      {pokemonIndex > 0 && <button onClick={handleBefore}>Previous</button>}
-      {pokemonIndex < pokemonList.length - 1 && <button onClick={handleNext}>Next</button>}
     </>
   )
 }
